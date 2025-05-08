@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Chaty - Cadastro</title>
+{% endblock %}
+
+{% block menu %}
+{% endblock %}
+
+{% block content %}
+<div class="container d-flex flex-column min-vh-100 justify-content-center">
+    <!-- Logo/Cabeçalho Chaty -->
+    <div class="row justify-content-center mb-4">
+        <div class="col-12 text-center">
+            <h1 class="display-4 text-primary fw-bold">Chaty</h1>
+            <p class="lead text-muted">Crie sua conta</p>
+        </div>
+    </div>
+    
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card shadow-lg border-0 rounded-lg">
+                <div class="card-header bg-white text-black-50 text-center">
+                    <h3 class="text-center font-weight-light my-2">Cadastro</h3>
+                </div>
+                <div class="card-body">
+                    {% if erros %}
+                    <div class="alert alert-danger">
+                        <ul class="mb-0">
+                            {% for erro in erros %}
+                            <li>{{ erro }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+                    
+                    <form method="POST" class="needs-validation" novalidate>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" name="name" id="floatingName" 
+                                   value="{{ name }}" placeholder="Nome completo" required>
+                            <label for="floatingName">Nome completo</label>
+                            <div class="invalid-feedback">
+                                Por favor, insira seu nome.
+                            </div>
+                        </div>
+                        
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" name="email" id="floatingEmail"
+                                   value="{{ email }}" placeholder="name@example.com" required>
+                            <label for="floatingEmail">Email</label>
+                            <div class="invalid-feedback">
+                                Por favor, insira um email válido.
+                            </div>
+                        </div>
+                        
+                        <div class="form-floating mb-3">
+                            <input type="tel" class="form-control" name="telefone" id="floatingPhone"
+                                   value="{{ telefone }}" placeholder="Telefone">
+                            <label for="floatingPhone">Telefone (opcional)</label>
+                        </div>
+                        
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" name="password1" 
+                                   id="floatingPassword1" placeholder="Senha" required>
+                            <label for="floatingPassword1">Senha</label>
+                            <div class="invalid-feedback">
+                                Por favor, insira uma senha.
+                            </div>
+                        </div>
+                        
+                        <div class="form-floating mb-4">
+                            <input type="password" class="form-control" name="password2" 
+                                   id="floatingPassword2" placeholder="Confirme a senha" required>
+                            <label for="floatingPassword2">Confirme a senha</label>
+                            <div class="invalid-feedback">
+                                Por favor, confirme sua senha.
+                            </div>
+                        </div>
+                        
+                        <div class="d-grid gap-2 mb-3">
+                            <button type="submit" class="btn btn-primary btn-lg">Cadastrar</button>
+                        </div>
+                        
+                        <div class="text-center">
+                            <p class="mb-0">Já tem uma conta? 
+                                <a href="{{url_for('login')}}" class="text-decoration-none">Faça login aqui</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+(function() {
+    'use strict';
+    window.addEventListener('load', function() {
+        var forms = document.getElementsByClassName('needs-validation');
+        var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+                // Validação personalizada para confirmar senha
+                var password1 = document.getElementById('floatingPassword1').value;
+                var password2 = document.getElementById('floatingPassword2').value;
+                
+                if (password1 !== password2) {
+                    document.getElementById('floatingPassword2').setCustomValidity('As senhas não coincidem');
+                } else {
+                    document.getElementById('floatingPassword2').setCustomValidity('');
+                }
+                
+                if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    }, false);
+})();
+</script>
+{% endblock %}

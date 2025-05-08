@@ -1,0 +1,28 @@
+.container {
+    position: relative;
+}
+
+.form-centralizado {
+    margin-top: 50px;
+    margin-left: 20%;
+    margin-right: 20%;
+    display: grid;
+    align-items: center;
+}
+
+.titulo-pagina {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #333;
+    padding: 10px;
+}
+
+.comando {
+    display: flex;
+    justify-content: space-between;
+}
