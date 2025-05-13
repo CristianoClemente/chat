@@ -4,6 +4,10 @@
 
 **Trabalho desenvolvido para a disciplina Desenvolvimento Web II do curso de ADS no IFSC-Tubarão**
 
+## 🌐 Hospedagem
+- **Plataforma**: PythonAnywhere (plano Free)
+- **URL**: [https://cristianobc.pythonanywhere.com](https://cristianobc.pythonanywhere.com)
+
 ## 📝 Objetivo do Projeto
 
 Implementar um sistema de gerenciamento de contatos com mensagens, aplicando os conceitos aprendidos na disciplina:
@@ -38,8 +42,9 @@ Implementar um sistema de gerenciamento de contatos com mensagens, aplicando os 
 |--------------|--------------------------------------|
 | Frontend     | HTML5, CSS3, Bootstrap, Jinja2       |
 | Backend      | Python, Flask, SQLAlchemy            |
-| Banco de Dados | SQLite            |
-| Segurança    | Flask-Login, Werkzeug      |
+| Banco de Dados | SQLite (local) / MySQL (produção)    |
+| Segurança    | Flask-Login, Werkzeug                |
+| Hospedagem   | PythonAnywhere                       |
 
 ## 📊 Diagrama de Entidades
 
